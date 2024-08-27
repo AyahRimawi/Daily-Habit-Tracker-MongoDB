@@ -1,5 +1,4 @@
 # Daily-Habit-Tracker-MongoDB
-# Daily Habit Tracker
 
 The Daily Habit Tracker is a web application designed to help users build and maintain positive habits. With features to track daily activities, set goals, and visualize progress, this application supports users in developing and sustaining new habits over time.
 
