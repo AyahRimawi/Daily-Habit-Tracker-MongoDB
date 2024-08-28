@@ -1,0 +1,18 @@
+habit-tracker/
+│
+├── client/                 # مجلد الواجهة الأمامية (React)
+│   ├── src/
+│   │   ├── components/     # مكونات React
+│   │   ├── pages/          # صفحات التطبيق
+│   │   ├── services/       # خدمات API
+│   │   └── App.js
+│   └── package.json
+│
+└── server/                 # مجلد الخادم (Node.js/Express)
+    ├── config/             # ملفات الإعداد
+    ├── controllers/        # وحدات التحكم
+    ├── models/             # نماذج Mongoose
+    ├── routes/             # مسارات API
+    ├── server.js           # نقطة الدخول للخادم
+    └── package.json
+    
