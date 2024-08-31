@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import axios here
 
 const HabitItem = ({ habit, onUpdate, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -10,22 +11,17 @@ const HabitItem = ({ habit, onUpdate, onDelete }) => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(
+      const response = await axios.put(
         `http://localhost:8080/api/habits/${habit._id}`,
+        editedHabit,
         {
-          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(editedHabit),
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to update habit");
-      }
-
-      const updatedHabit = await response.json();
+      const updatedHabit = response.data;
       onUpdate(updatedHabit);
       setIsEditing(false);
     } catch (error) {
@@ -35,17 +31,7 @@ const HabitItem = ({ habit, onUpdate, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/habits/${habit._id}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete habit");
-      }
-
+      await axios.delete(`http://localhost:8080/api/habits/${habit._id}`);
       onDelete(habit._id);
     } catch (error) {
       console.error("Error deleting habit:", error);

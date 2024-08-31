@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; // Import axios here
 import { Link } from "react-router-dom";
 import HabitItem from "./HabitItem";
 import SearchBar from "./SearchBar";
@@ -17,10 +18,9 @@ const HabitList = () => {
 
   const fetchHabits = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/habits");
-      const data = await response.json();
-      setHabits(data);
-      setFilteredHabits(data);
+      const response = await axios.get("http://localhost:8080/api/habits");
+      setHabits(response.data);
+      setFilteredHabits(response.data);
     } catch (error) {
       console.error("Error fetching habits:", error);
     }
