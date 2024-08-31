@@ -1,11 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const habitController = require("../controllers/habitController");
+const habitSearchController = require("../controllers/searchController");
+const habitFilterController = require("../controllers/filterController");
+const habitPaginationController = require("../controllers/paginationController");
 
+// Habit CRUD operations
 router.get("/", habitController.getAllHabits);
 router.post("/", habitController.createHabit);
 router.put("/:id", habitController.updateHabit);
 router.delete("/:id", habitController.deleteHabit);
+
+// Search, Filter, and Pagination routes
+router.get("/search", habitSearchController.searchHabits);
+router.get("/filter", habitFilterController.filterHabits);
+router.get("/paginate", habitPaginationController.paginateHabits);
 
 module.exports = router;
 

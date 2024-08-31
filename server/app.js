@@ -17,5 +17,5 @@ const habitRoutes = require("./src/routes/habitRoutes");
 app.use("/api/habits", habitRoutes);
 // -----------------------------
 
-const PORT = 6000;
+const PORT = 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

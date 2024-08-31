@@ -1,40 +1,23 @@
-// client/src/App.jsx
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import HabitList from "./components/HabitList";
-import AddHabitForm from "./components/AddHabitForm";
+import AddHabitModal from "./components/AddHabitModal";
+import ProgressView from "./components/ProgressView";
 
-function App() {
+const App = () => {
   return (
-    <div className="container mx-auto p-4">
-      <nav className="mb-4">
-        <ul className="flex space-x-4">
-          <li>
-            <Link to="/" className="text-blue-500 hover:text-blue-700">
-              الصفحة الرئيسية
-            </Link>
-          </li>
-          <li>
-            <Link to="/add" className="text-blue-500 hover:text-blue-700">
-              إضافة عادة جديدة
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<HabitList />} />
-        <Route
-          path="/add"
-          element={
-            <AddHabitForm
-              onHabitAdded={() => console.log("تمت إضافة عادة جديدة")}
-            />
-          }
-        />
-      </Routes>
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <main className="container mx-auto px-4 py-8">
+        <Routes>
+          <Route path="/" element={<HabitList />} />
+          <Route path="/add" element={<AddHabitModal />} />
+          <Route path="/progress" element={<ProgressView />} />
+        </Routes>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
